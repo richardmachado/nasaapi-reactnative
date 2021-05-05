@@ -1,29 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
 
-import Curiosity from "./Rovers/Curiosity";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-export default function App() {
+import HomeScreen from "./Screens/HomeScreen";
+import POTD from "./Screens/POTD";
+import NEO from "./Screens/NEO";
 
+import RoversHomeScreen from "./Screens/Rovers/RoversHomeScreen";
+import Spirit from "./Screens/Rovers/Spirit";
+import Curiosity from "./Screens/Rovers/Curiosity";
+import Opportunity from "./Screens/Rovers/Opportunity";
+import Perserverance from "./Screens/Rovers/Perserverance";
 
+const Stack = createStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>NASA APIs!</Text>
-      <Curiosity />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="POTD" component={POTD} />
+        <Stack.Screen name="NEO" component={NEO} />
+
+        <Stack.Screen name="RoversHomeScreen" component={RoversHomeScreen} />
+        <Stack.Screen name="Spirit" component={Spirit} />
+        <Stack.Screen name="Curiosity" component={Curiosity} />
+        <Stack.Screen name="Opportunity" component={Opportunity} />
+        <Stack.Screen name="Perserverance" component={Perserverance} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  header: {
-    fontSize:24,
-  }
-});
+export default App;
