@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -18,7 +18,7 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Spirit">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="POTD" component={POTD} />
         <Stack.Screen name="NEO" component={NEO} />
