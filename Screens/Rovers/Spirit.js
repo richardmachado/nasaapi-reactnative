@@ -54,7 +54,7 @@ export default function Spirit() {
           ]}
           open={open}
           setOpen={setOpen}
-          // value={value}
+          value={value}
 
           defaultIndex={0}
           placeholder="Camera"
