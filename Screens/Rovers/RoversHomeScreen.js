@@ -7,8 +7,7 @@ export default function RoversHomeScreen({ navigation }) {
       <Image
         style={{ width: 375, height: 325 }}
         source={{
-          uri:
-            "https://mars.nasa.gov/layout/mars2020/images/PIA23764-RoverNamePlateonMars-web.jpg",
+          uri: "https://mars.nasa.gov/layout/mars2020/images/PIA23764-RoverNamePlateonMars-web.jpg",
         }}
       />
       <View>

@@ -7,8 +7,7 @@ export default function HomeScreen({ navigation }) {
       <Image
         style={{ width: 375, height: 325 }}
         source={{
-          uri:
-            "https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.jpg",
+          uri: "https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.jpg",
         }}
       />
       <View style={{ marginBottom: 30, marginTop: 20 }}>
