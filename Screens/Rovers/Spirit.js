@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ScrollView, View, Text, Image } from "react-native";
+import { ScrollView, View, Text, Image, TextInput } from "react-native";
 import axios from "axios";
 import DropDownPicker from "react-native-dropdown-picker";
 
@@ -10,13 +10,14 @@ export default function Spirit() {
   const [day, setDay] = useState(1);
   const [camera, setCamera] = useState("RHAZ");
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items, setItems] = useState([]);
+  const [value, setValue] = useState(1);
+  // const [items, setItems] = useState([]);
+
   const handleChange = (event) => {
-    setDay(event.target.value);
+    setDay(event);
   };
   const handleSubmit = (e) => {
-    setCamera(e.target.value);
+    setCamera(e);
   };
   useEffect(() => {
     axios
@@ -44,27 +45,61 @@ export default function Spirit() {
           flex: 1,
           flexDirection: "row",
           justifyContent: "center",
-          marginBottom: 150,
+          marginBottom: 200,
         }}
       >
-         <DropDownPicker
+        {/* <DropDownPicker
           items={[
-            { label: "Apple", value: "apple" },
-            { label: "Banana", value: "banana" },
+            { value: "RHAZ", label: "Rear Hazard" },
+            { value: "FHAZ ", label: "Front Hazard" },
+            { value: "NAVCAM", label: "Navigation Camera" },
+            { value: "PANCAM", label: "Panoramic Camera" },
+            { value: "MINITES", label: "MiniTES" },
           ]}
           open={open}
           setOpen={setOpen}
-          value={value}
-
+          // value={value}
           defaultIndex={0}
           placeholder="Camera"
           dropDownStyle={{ marginTop: 2, backgroundColor: "skyblue" }}
           containerStyle={{ height: 40, width: 170, height: 70 }}
           onChangeItem={(item) => handleSubmit(item.value)}
-        /> 
+        /> */}
+                  <DropDownPicker
+        items={[
+                  { value: "RHAZ", label: "Rear Hazard" },
+                  { value: "FHAZ ", label: "Front Hazard" },
+                  { value: "NAVCAM", label: "Navigation Camera" },
+                  { value: "PANCAM", label: "Panoramic Camera" },
+                  { value: "MINITES", label: "MiniTES" },
+          ]}
+          open={open}
+          setOpen={setOpen}
+          // value={value}
+            style={{ paddingVertical: 10 }}
+            defaultIndex={0}
+            placeholder="Chapter"
+            dropDownStyle={{ marginTop: 2, backgroundColor: "skyblue" }}
+            containerStyle={{ height: 40, width: 120, height: 70 }}
+            onChangeItem={(item) => handleChange(item.value)}
+        />
+        
+
+              <TextInput
+          style={{
+            height: 40,
+          width: 55,
+          margin: 12,
+          borderWidth: 1,}}
+        onChangeText={handleChange}
+        value={day}
+        placeholder="0 is 1st day on Marsr"
+        keyboardType="numeric"
+      />
       </View>
 
       <View>
+        <Text>You selected {camera} and {day} </Text>
         {mars.map((photos) => {
           return (
             <View key={photos.id}>
@@ -72,10 +107,19 @@ export default function Spirit() {
                 source={{
                   uri: `${photos.img_src}`,
                 }}
-                style={{ height: 350, width: 350 }}
+                style={{ height: 375, width: 375, marginLeft: 25 }}
               />
 
-              <Text className="prompt">Date = {photos.earth_date}</Text>
+              <Text
+                style={{
+                  justifyContent: "center",
+                  fontSize: 24,
+                  marginBottom: 10,
+                  marginTop: 10,
+                }}
+              >
+                Date = {photos.earth_date}
+              </Text>
             </View>
           );
         })}
