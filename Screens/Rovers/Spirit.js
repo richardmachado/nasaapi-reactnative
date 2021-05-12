@@ -47,7 +47,7 @@ export default function Spirit() {
           marginBottom: 150,
         }}
       >
-        <DropDownPicker
+         <DropDownPicker
           items={[
             { label: "Apple", value: "apple" },
             { label: "Banana", value: "banana" },
@@ -61,7 +61,7 @@ export default function Spirit() {
           dropDownStyle={{ marginTop: 2, backgroundColor: "skyblue" }}
           containerStyle={{ height: 40, width: 170, height: 70 }}
           onChangeItem={(item) => handleSubmit(item.value)}
-        />
+        /> 
       </View>
 
       <View>
