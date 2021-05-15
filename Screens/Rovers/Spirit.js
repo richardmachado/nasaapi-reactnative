@@ -10,7 +10,7 @@ export default function Spirit() {
   const [day, setDay] = useState(1);
   const [camera, setCamera] = useState("RHAZ");
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState("1");
   // const [items, setItems] = useState([]);
 
   const handleChange = (event) => {
@@ -65,41 +65,43 @@ export default function Spirit() {
           containerStyle={{ height: 40, width: 170, height: 70 }}
           onChangeItem={(item) => handleSubmit(item.value)}
         /> */}
-                  <DropDownPicker
-        items={[
-                  { value: "RHAZ", label: "Rear Hazard" },
-                  { value: "FHAZ ", label: "Front Hazard" },
-                  { value: "NAVCAM", label: "Navigation Camera" },
-                  { value: "PANCAM", label: "Panoramic Camera" },
-                  { value: "MINITES", label: "MiniTES" },
+        <DropDownPicker
+          items={[
+            { value: "RHAZ", label: "Rear Hazard" },
+            { value: "FHAZ ", label: "Front Hazard" },
+            { value: "NAVCAM", label: "Navigation Camera" },
+            { value: "PANCAM", label: "Panoramic Camera" },
+            { value: "MINITES", label: "MiniTES" },
           ]}
           open={open}
           setOpen={setOpen}
           // value={value}
-            style={{ paddingVertical: 10 }}
-            defaultIndex={0}
-            placeholder="Chapter"
-            dropDownStyle={{ marginTop: 2, backgroundColor: "skyblue" }}
-            containerStyle={{ height: 40, width: 120, height: 70 }}
-            onChangeItem={(item) => handleChange(item.value)}
+          style={{ paddingVertical: 10 }}
+          defaultIndex={0}
+          placeholder="Camera"
+          dropDownStyle={{ marginTop: 2, backgroundColor: "skyblue" }}
+          containerStyle={{ height: 40, width: 120, height: 70 }}
+          onChangeItem={(item) => handleChange(item.value)}
         />
-        
 
-              <TextInput
+        <TextInput
           style={{
             height: 40,
-          width: 55,
-          margin: 12,
-          borderWidth: 1,}}
-        onChangeText={handleChange}
-        value={day}
-        placeholder="0 is 1st day on Marsr"
-        keyboardType="numeric"
-      />
+            width: 55,
+            margin: 12,
+            borderWidth: 1,
+          }}
+          onChangeText={handleChange}
+          value={day}
+          placeholder="0 is 1st day on Marsr"
+          keyboardType="numeric"
+        />
       </View>
 
       <View>
-        <Text>You selected {camera} and {day} </Text>
+        <Text>
+          You selected {camera} and {day}{" "}
+        </Text>
         {mars.map((photos) => {
           return (
             <View key={photos.id}>
