@@ -13,22 +13,22 @@ export default function RoversHomeScreen({ navigation }) {
       <View>
         <Button
           title="Curiosity"
-          onPress={() => navigation.navigate("Curiosity")}
+          onPress={() => navigation.navigate("Curiosity Rover")}
         />
       </View>
       <View>
         <Button
           title="Opportunity"
-          onPress={() => navigation.navigate("Opportunity")}
+          onPress={() => navigation.navigate("Opportunity Rover")}
         />
       </View>
       <View>
-        <Button title="Spirit" onPress={() => navigation.navigate("Spirit")} />
+        <Button title="Spirit" onPress={() => navigation.navigate("Spirit Rover")} />
       </View>
       <View>
         <Button
           title="Perserverance"
-          onPress={() => navigation.navigate("Perserverance")}
+          onPress={() => navigation.navigate("Perserverance Rover")}
         />
       </View>
     </View>

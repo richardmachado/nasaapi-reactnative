@@ -18,16 +18,16 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Spirit">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="POTD" component={POTD} />
         <Stack.Screen name="NEO" component={NEO} />
 
         <Stack.Screen name="RoversHomeScreen" component={RoversHomeScreen} />
-        <Stack.Screen name="Spirit" component={Spirit} />
-        <Stack.Screen name="Curiosity" component={Curiosity} />
-        <Stack.Screen name="Opportunity" component={Opportunity} />
-        <Stack.Screen name="Perserverance" component={Perserverance} />
+        <Stack.Screen name="Spirit Rover" component={Spirit} />
+        <Stack.Screen name="Curiosity Rover" component={Curiosity} />
+        <Stack.Screen name="Opportunity Rover" component={Opportunity} />
+        <Stack.Screen name="Perserverance Rover" component={Perserverance} />
       </Stack.Navigator>
     </NavigationContainer>
   );

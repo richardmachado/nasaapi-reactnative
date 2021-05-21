@@ -10,8 +10,14 @@ export default function Spirit() {
   const [day, setDay] = useState(1);
   const [camera, setCamera] = useState("RHAZ");
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("1");
-  // const [items, setItems] = useState([]);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    { value: "RHAZ", label: "Rear Hazard" },
+    { value: "FHAZ ", label: "Front Hazard" },
+    { value: "NAVCAM", label: "Navigation Camera" },
+    { value: "PANCAM", label: "Panoramic Camera" },
+    { value: "MINITES", label: "MiniTES" },
+  ]);
 
   const handleChange = (event) => {
     setDay(event);
@@ -19,6 +25,7 @@ export default function Spirit() {
   const handleSubmit = (e) => {
     setCamera(e);
   };
+
   useEffect(() => {
     axios
       .get(
@@ -48,52 +55,31 @@ export default function Spirit() {
           marginBottom: 200,
         }}
       >
-        {/* <DropDownPicker
-          items={[
-            { value: "RHAZ", label: "Rear Hazard" },
-            { value: "FHAZ ", label: "Front Hazard" },
-            { value: "NAVCAM", label: "Navigation Camera" },
-            { value: "PANCAM", label: "Panoramic Camera" },
-            { value: "MINITES", label: "MiniTES" },
-          ]}
-          open={open}
-          setOpen={setOpen}
-          // value={value}
-          defaultIndex={0}
-          placeholder="Camera"
-          dropDownStyle={{ marginTop: 2, backgroundColor: "skyblue" }}
-          containerStyle={{ height: 40, width: 170, height: 70 }}
-          onChangeItem={(item) => handleSubmit(item.value)}
-        /> */}
         <DropDownPicker
-          items={[
-            { value: "RHAZ", label: "Rear Hazard" },
-            { value: "FHAZ ", label: "Front Hazard" },
-            { value: "NAVCAM", label: "Navigation Camera" },
-            { value: "PANCAM", label: "Panoramic Camera" },
-            { value: "MINITES", label: "MiniTES" },
-          ]}
+          items={items}
           open={open}
           setOpen={setOpen}
-          // value={value}
+          value={value}
           style={{ paddingVertical: 10 }}
           defaultIndex={0}
           placeholder="Camera"
-          dropDownStyle={{ marginTop: 2, backgroundColor: "skyblue" }}
+          dropDownStyle={{ marginTop: 2 }}
           containerStyle={{ height: 40, width: 120, height: 70 }}
-          onChangeItem={(item) => handleChange(item.value)}
+          // onChangeItem={(item) => handleSubmit(item.value)}
+          setValue={(item) => handleSubmit(item)}
+          setItems={setItems}
         />
 
         <TextInput
           style={{
-            height: 40,
-            width: 55,
-            margin: 12,
+            height: 50,
+            width: 65,
+            marginLeft: 5,
             borderWidth: 1,
           }}
           onChangeText={handleChange}
-          value={day}
-          placeholder="0 is 1st day on Marsr"
+          // value={value}
+          placeholder="day"
           keyboardType="numeric"
         />
       </View>
