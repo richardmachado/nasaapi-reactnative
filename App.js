@@ -18,10 +18,10 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Near Earth Objects">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="POTD" component={POTD} />
-        <Stack.Screen name="NEO" component={NEO} />
+        <Stack.Screen name="Near Earth Objects" component={NEO} />
 
         <Stack.Screen name="RoversHomeScreen" component={RoversHomeScreen} />
         <Stack.Screen name="Spirit Rover" component={Spirit} />
