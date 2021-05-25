@@ -23,7 +23,10 @@ export default function RoversHomeScreen({ navigation }) {
         />
       </View>
       <View>
-        <Button title="Spirit" onPress={() => navigation.navigate("Spirit Rover")} />
+        <Button
+          title="Spirit"
+          onPress={() => navigation.navigate("Spirit Rover")}
+        />
       </View>
       <View>
         <Button
