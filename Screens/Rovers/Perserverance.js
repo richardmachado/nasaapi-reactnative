@@ -3,9 +3,9 @@ import { ScrollView, View, Text, Image, TextInput } from "react-native";
 import axios from "axios";
 import DropDownPicker from "react-native-dropdown-picker";
 
-const KEY = "X7831OHO7jNbCUFp6ZquUbFjI2txHRDvsbay1fU4";
+const KEY = "";
 
-export default function Spirit() {
+export default function Perserverance() {
   const [mars, setMars] = useState(0);
   const [day, setDay] = useState(1);
   const [camera, setCamera] = useState("EDL_PUCAM2");
