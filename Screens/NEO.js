@@ -3,7 +3,7 @@ import axios from "axios";
 import { View, Text, ScrollView } from "react-native";
 import moment from "moment";
 import DropDownPicker from "react-native-dropdown-picker";
-import NeoKey from './NeoKey'
+import NeoKey from "./NeoKey";
 
 var today = moment().utc().format("YYYY-MM-DD");
 var tomorrow = moment().utc().add(1, "d").format("YYYY-MM-DD");
@@ -65,7 +65,7 @@ export default function NEO() {
         defaultIndex={0}
         placeholder="Select a date"
         dropDownStyle={{ marginTop: 2 }}
-        containerStyle={{ height: 40, height: 70 }}
+        containerStyle={{ height: 100 }}
         setValue={(item) => handleSubmit(item)}
         setItems={setItems}
       />
@@ -73,20 +73,62 @@ export default function NEO() {
       <View>
         <View>
           <NeoKey />
-          </View>
+        </View>
         {neo.map((neos) => {
           return (
-            <View style={{ marginBottom: 25 }}>
-              <Text key={neos.name}>Asteroid Name: { neos.id }{neos.name}{ neos.is_potentially_hazardous_asteroid}</Text>
+            <View key={neos.name} style={{ marginBottom: 25 }}>
+              <Text>Closest Approach Date: {date}</Text>
               <Text>
-                {" "}
-                Miss Distance:{" "}
-                {numberWithCommas(
-                  Math.round(neos.close_approach_data[0].miss_distance.miles)
-                )}{" "}
-                Miles
+                Asteroid Name:
+                {neos.is_potentially_hazardous_asteroid === false ? (
+                  <Text style={{ backgroundColor: "lightblue" }}>
+                    {" "}
+                    {neos.name}
+                  </Text>
+                ) : (
+                  <Text style={{ backgroundColor: "pink" }}> {neos.name}</Text>
+                )}
               </Text>
 
+              <Text>
+                Maximum Diameter:{" "}
+                {Math.round(
+                  neos.estimated_diameter.feet.estimated_diameter_max * 100
+                ) / 100}{" "}
+                feet
+              </Text>
+
+              <Text>
+                {neos.close_approach_data[0].miss_distance.miles < 500000 ? (
+                  <Text style={{ backgroundColor: "pink" }}>
+                    Miss Distance :{" "}
+                    {numberWithCommas(
+                      Math.round(
+                        neos.close_approach_data[0].miss_distance.miles
+                      )
+                    )}
+                  </Text>
+                ) : (
+                  <Text style={{ backgroundColor: "white" }}>
+                    Miss Distance :{" "}
+                    {numberWithCommas(
+                      Math.round(
+                        neos.close_approach_data[0].miss_distance.miles
+                      )
+                    )}
+                  </Text>
+                )}
+              </Text>
+
+              <Text>
+                Relative Velocity:{" "}
+                {numberWithCommas(
+                  Math.round(
+                    neos.close_approach_data[0].relative_velocity.miles_per_hour
+                  )
+                )}{" "}
+                MPH
+              </Text>
             </View>
           );
         })}
