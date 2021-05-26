@@ -3,6 +3,8 @@ import { ScrollView, View, Text, Image, TextInput } from "react-native";
 import axios from "axios";
 import DropDownPicker from "react-native-dropdown-picker";
 
+import { styles } from "./styles/RoverStyles";
+
 const KEY = "";
 
 export default function Opportunity() {
@@ -47,14 +49,7 @@ export default function Opportunity() {
   }
   return (
     <ScrollView>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: "row",
-          justifyContent: "center",
-          marginBottom: 200,
-        }}
-      >
+      <View style={styles.pickers}>
         <DropDownPicker
           items={items}
           open={open}
@@ -71,14 +66,8 @@ export default function Opportunity() {
         />
 
         <TextInput
-          style={{
-            height: 50,
-            width: 65,
-            marginLeft: 5,
-            borderWidth: 1,
-          }}
+          style={styles.input}
           onChangeText={handleChange}
-          // value={value}
           placeholder="day"
           keyboardType="numeric"
         />
@@ -95,19 +84,10 @@ export default function Opportunity() {
                 source={{
                   uri: `${photos.img_src}`,
                 }}
-                style={{ height: 375, width: 375, marginLeft: 25 }}
+                style={styles.photos}
               />
 
-              <Text
-                style={{
-                  justifyContent: "center",
-                  fontSize: 24,
-                  marginBottom: 10,
-                  marginTop: 10,
-                }}
-              >
-                Date = {photos.earth_date}
-              </Text>
+              <Text style={styles.date}>Date = {photos.earth_date}</Text>
             </View>
           );
         })}
