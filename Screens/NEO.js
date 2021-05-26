@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, ImageBackground, StyleSheet } from "react-native";
 import moment from "moment";
 import DropDownPicker from "react-native-dropdown-picker";
 import NeoKey from "./NeoKey";
@@ -13,6 +13,8 @@ var threedaysaftertomorrow = moment().utc().add(4, "d").format("YYYY-MM-DD");
 var fourdaysaftertomorrow = moment().utc().add(5, "d").format("YYYY-MM-DD");
 var fivedaysaftertomorrow = moment().utc().add(6, "d").format("YYYY-MM-DD");
 var sixdaysaftertomorrow = moment().utc().add(7, "d").format("YYYY-MM-DD");
+
+const image = { uri: "https://scx2.b-cdn.net/gfx/news/2019/dontworryabo.jpg" };
 
 const KEY = "";
 
@@ -57,6 +59,7 @@ export default function NEO() {
 
   return (
     <ScrollView>
+      <ImageBackground source={image} style={styles.image} >
       <DropDownPicker
         items={items}
         open={open}
@@ -77,20 +80,20 @@ export default function NEO() {
         {neo.map((neos) => {
           return (
             <View key={neos.name} style={{ marginBottom: 25 }}>
-              <Text>Closest Approach Date: {date}</Text>
-              <Text>
-                Asteroid Name:
+              <Text style={{color:"white"}}>Closest Approach Date: {date}</Text>
+              <Text style={{ color: "white" }}>
+                Asteroid Name: {" "}
                 {neos.is_potentially_hazardous_asteroid === false ? (
-                  <Text style={{ backgroundColor: "lightblue" }}>
-                    {" "}
+                  <Text style={{ backgroundColor: "lightblue", color:"black" }}>
+                    
                     {neos.name}
                   </Text>
                 ) : (
-                  <Text style={{ backgroundColor: "pink" }}> {neos.name}</Text>
+                  <Text style={{ backgroundColor: "pink", color:"black" }}>{neos.name}</Text>
                 )}
               </Text>
 
-              <Text>
+              <Text style={{ color: "white" }}>
                 Maximum Diameter:{" "}
                 {Math.round(
                   neos.estimated_diameter.feet.estimated_diameter_max * 100
@@ -98,9 +101,9 @@ export default function NEO() {
                 feet
               </Text>
 
-              <Text>
+              <Text style={{ color: "white" }}>
                 {neos.close_approach_data[0].miss_distance.miles < 500000 ? (
-                  <Text style={{ backgroundColor: "pink" }}>
+                  <Text style={{ backgroundColor: "pink", color:"black" }}>
                     Miss Distance :{" "}
                     {numberWithCommas(
                       Math.round(
@@ -109,7 +112,7 @@ export default function NEO() {
                     )}
                   </Text>
                 ) : (
-                  <Text style={{ backgroundColor: "white" }}>
+                  <Text style={{  color:"white" }}>
                     Miss Distance :{" "}
                     {numberWithCommas(
                       Math.round(
@@ -120,7 +123,7 @@ export default function NEO() {
                 )}
               </Text>
 
-              <Text>
+              <Text style={{ color: "white" }}>
                 Relative Velocity:{" "}
                 {numberWithCommas(
                   Math.round(
@@ -132,7 +135,27 @@ export default function NEO() {
             </View>
           );
         })}
-      </View>
+        </View>
+        </ImageBackground>
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "column"
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
+  text: {
+    color: "white",
+    fontSize: 42,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#000000a0"
+  }
+});
