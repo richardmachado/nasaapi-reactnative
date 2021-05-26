@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { ScrollView, View, Text, Image, TextInput } from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  Image,
+  TextInput,
+} from "react-native";
 import axios from "axios";
 import DropDownPicker from "react-native-dropdown-picker";
+
+import { styles } from "./styles/RoverStyles";
 
 const KEY = "";
 
@@ -48,14 +56,7 @@ export default function Curiosity() {
   }
   return (
     <ScrollView>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: "row",
-          justifyContent: "center",
-          marginBottom: 200,
-        }}
-      >
+      <View style={styles.pickers}>
         <DropDownPicker
           items={items}
           open={open}
@@ -66,20 +67,13 @@ export default function Curiosity() {
           placeholder="Camera"
           dropDownStyle={{ marginTop: 2 }}
           containerStyle={{ height: 40, width: 120, height: 70 }}
-          // onChangeItem={(item) => handleSubmit(item.value)}
           setValue={(item) => handleSubmit(item)}
           setItems={setItems}
         />
 
         <TextInput
-          style={{
-            height: 50,
-            width: 65,
-            marginLeft: 5,
-            borderWidth: 1,
-          }}
+          style={styles.input}
           onChangeText={handleChange}
-          // value={value}
           placeholder="day"
           keyboardType="numeric"
         />
@@ -96,19 +90,10 @@ export default function Curiosity() {
                 source={{
                   uri: `${photos.img_src}`,
                 }}
-                style={{ height: 375, width: 375, marginLeft: 25 }}
+                style={styles.photos}
               />
 
-              <Text
-                style={{
-                  justifyContent: "center",
-                  fontSize: 24,
-                  marginBottom: 10,
-                  marginTop: 10,
-                }}
-              >
-                Date = {photos.earth_date}
-              </Text>
+              <Text style={styles.date}>Date = {photos.earth_date}</Text>
             </View>
           );
         })}
